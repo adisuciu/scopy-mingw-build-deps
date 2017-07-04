@@ -11,7 +11,7 @@ JOBS=3
 
 CC=/${MINGW_VERSION}/bin/${ARCH}-w64-mingw32-gcc.exe
 CXX=/${MINGW_VERSION}/bin/${ARCH}-w64-mingw32-g++.exe
-CMAKE_OPTS="-DCMAKE_BUILD_TYPE=Release \
+CMAKE_OPTS="-DCMAKE_BUILD_TYPE=Debug \
 	-DCMAKE_INSTALL_PREFIX=/${MINGW_VERSION} \
 	-DCMAKE_C_COMPILER:FILEPATH=${CC} \
 	-DCMAKE_CXX_COMPILER:FILEPATH=${CXX} \
@@ -26,13 +26,12 @@ DEPENDENCIES="mingw-w64-${ARCH}-libxml2 \
 	mingw-w64-${ARCH}-boost \
 	mingw-w64-${ARCH}-fftw \
 	mingw-w64-${ARCH}-libzip \
-	mingw-w64-${ARCH}-python3 \
-	mingw-w64-${ARCH}-fftw \
-	mingw-w64-${ARCH}-libzip \
-	mingw-w64-${ARCH}-glib2 \
-	mingw-w64-${ARCH}-glibmm \
-	mingw-w64-${ARCH}-pkg-config \
-	mingw-w64-${ARCH}-qt5"
+	mingw-w64-${ARCH}-pkg-config"
+#\
+#	mingw-w64-${ARCH}-python3 \
+#	mingw-w64-${ARCH}-glib2 \
+#	mingw-w64-${ARCH}-glibmm \
+#	mingw-w64-${ARCH}-qt5"
 
 # Remove dependencies that prevent us from upgrading to GCC 6.2
 pacman -Rs --noconfirm \
@@ -57,7 +56,7 @@ pacman --noconfirm -Sy \
 pacman --noconfirm -Sy ${DEPENDENCIES}
 
 # Fix Qt5 spec files
-sed -i "s/\$\${CROSS_COMPILE}/${ARCH}-w64-mingw32-/" /${MINGW_VERSION}/share/qt5/mkspecs/win32-g++/qmake.conf
+#sed -i "s/\$\${CROSS_COMPILE}/${ARCH}-w64-mingw32-/" /${MINGW_VERSION}/share/qt5/mkspecs/win32-g++/qmake.conf
 
 build_libiio() {
 	git clone --depth 1 https://github.com/analogdevicesinc/libiio.git ${WORKDIR}/libiio
@@ -249,19 +248,19 @@ build_gnuradio
 build_libiio
 build_libad9361
 build_griio
-build_qwt
-build_qwtpolar
-build_libsigrok
-build_libsigrokdecode
+#build_qwt
+#build_qwtpolar
+#build_libsigrok
+#build_libsigrokdecode
 
 # Fix DLLs installed in the wrong path
-mv ${WORKDIR}/msys64/${MINGW_VERSION}/lib/qwt.dll \
-	${WORKDIR}/msys64/${MINGW_VERSION}/lib/qwtpolar.dll \
-	${WORKDIR}/msys64/${MINGW_VERSION}/bin
+#mv ${WORKDIR}/msys64/${MINGW_VERSION}/lib/qwt.dll \
+#	${WORKDIR}/msys64/${MINGW_VERSION}/lib/qwtpolar.dll \
+#	${WORKDIR}/msys64/${MINGW_VERSION}/bin
 
-rm -rf ${WORKDIR}/msys64/${MINGW_VERSION}/doc \
-	${WORKDIR}/msys64/${MINGW_VERSION}/share/doc \
-	${WORKDIR}/msys64/${MINGW_VERSION}/lib/*.la
+#rm -rf ${WORKDIR}/msys64/${MINGW_VERSION}/doc \
+#	${WORKDIR}/msys64/${MINGW_VERSION}/share/doc \
+#	${WORKDIR}/msys64/${MINGW_VERSION}/lib/*.la
 
 tar cavf ${WORKDIR}/scopy-${MINGW_VERSION}-build-deps.tar.xz -C ${WORKDIR} msys64
 
