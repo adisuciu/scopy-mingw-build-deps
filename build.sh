@@ -201,8 +201,6 @@ build_gnuradio() {
 		-DENABLE_GR_FFT:BOOL=ON \
 		-DENABLE_GR_FILTER:BOOL=ON \
 		-DENABLE_INTERNAL_VOLK:BOOL=OFF \
-		-DENABLE_PYTHON:BOOL=ON \
-		-DPYTHON_LIBRARY:FILEPATH=C:/Python27/libs/libpython27.a \
 		-DSWIG_EXECUTABLE:FILEPATH=/${MINGW_VERSION}/bin/swig \
 		${WORKDIR}/gnuradio
 
@@ -261,7 +259,6 @@ build_griio() {
 		${CMAKE_OPTS} \
 		-DCMAKE_CXX_FLAGS="-D_hypot=hypot" \
 		-DSWIG_EXECUTABLE:FILEPATH=/${MINGW_VERSION}/bin/swig \
-		-DPYTHON_LIBRARY:FILEPATH=C:/Python27/libs/libpython27.a \
 		${WORKDIR}/gr-iio
 
 	make -j ${JOBS} install
