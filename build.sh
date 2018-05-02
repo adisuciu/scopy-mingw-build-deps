@@ -251,7 +251,7 @@ build_qwtpolar() {
 }
 
 build_griio() {
-	git clone --depth 1 https://github.com/analogdevicesinc/gr-iio.git -b fix-var-type ${WORKDIR}/gr-iio
+	git clone --depth 1 https://github.com/analogdevicesinc/gr-iio.git -b test-var-type ${WORKDIR}/gr-iio
 
 	mkdir ${WORKDIR}/gr-iio/build-${ARCH}
 	cd ${WORKDIR}/gr-iio/build-${ARCH}
