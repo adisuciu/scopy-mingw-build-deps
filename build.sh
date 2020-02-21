@@ -266,13 +266,13 @@ build_griio() {
 	DESTDIR=${WORKDIR} make -j ${JOBS} install
 }
 
-build_markdown
-build_cheetah
-build_libvolk
-build_gnuradio
-build_libiio
-build_libad9361
-build_griio
+#build_markdown
+#build_cheetah
+#build_libvolk
+#build_gnuradio
+#build_libiio
+#build_libad9361
+#build_griio
 build_qwt
 build_qwtpolar
 build_libsigrok
