@@ -61,8 +61,8 @@ pacman --force --noconfirm -Sy \
 
 # Qt5.14 introduces a bug in windeployqt -  use prev version until it's fixed
 # https://bugreports.qt.io/browse/QTBUG-80806
-wget -q http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-qt5-5.13.2-1-any.pkg.tar.xz
-pacman -U --noconfirm http://repo.msys2.org/mingw/x86_64/mingw-w64-x86_64-qt5-5.13.2-1-any.pkg.tar.xz
+wget -q http://repo.msys2.org/mingw/${ARCH}/mingw-w64-${ARCH}-qt5-5.13.2-1-any.pkg.tar.xz
+pacman -U --noconfirm http://repo.msys2.org/mingw/${ARCH}/mingw-w64-${ARCH}-qt5-5.13.2-1-any.pkg.tar.xz
 
 pacman -U --noconfirm http://repo.msys2.org/mingw/${ARCH}/mingw-w64-${ARCH}-doxygen-1.8.14-2-any.pkg.tar.xz
 pacman -U --noconfirm http://repo.msys2.org/mingw/${ARCH}/mingw-w64-${ARCH}-graphviz-2.40.1-4-any.pkg.tar.xz
